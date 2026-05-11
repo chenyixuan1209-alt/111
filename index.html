@@ -1,0 +1,254 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>台灣藝文活動探索 - 期末專題報告</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+TC:wght@400;700&family=Noto+Sans+TC:wght@300;400;500&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary: #2c3e50;
+            --accent: #e67e22;
+            --bg-light: #f9f7f2;
+        }
+
+        body {
+            font-family: 'Noto Sans TC', sans-serif;
+            background-color: var(--bg-light);
+            color: var(--primary);
+            overflow-x: hidden;
+        }
+
+        h1, h2, h3, .serif {
+            font-family: 'Noto Serif TC', serif;
+        }
+
+        /* 動畫背景 Canvas 樣式 */
+        #bg-canvas {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -1;
+            opacity: 0.6;
+        }
+
+        /* 漸層遮罩 */
+        .glass-card {
+            background: rgba(255, 255, 255, 0.8);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.3);
+            box-shadow: 0 8px 32px rgba(31, 38, 135, 0.07);
+        }
+
+        .hero-text {
+            background: linear-gradient(120deg, #2c3e50 0%, #34495e 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .btn-download {
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        .btn-download:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 10px 20px rgba(230, 126, 34, 0.2);
+        }
+
+        /* 平滑滾動 */
+        html {
+            scroll-behavior: smooth;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- 背景動畫畫布 -->
+    <canvas id="bg-canvas"></canvas>
+
+    <!-- 導覽列 -->
+    <nav class="fixed w-full z-50 px-6 py-4 flex justify-between items-center transition-all duration-300" id="navbar">
+        <div class="text-xl font-bold serif tracking-widest text-slate-800">ART TAIWAN</div>
+        <div class="hidden md:flex space-x-8 text-sm font-medium uppercase tracking-wider">
+            <a href="#about" class="hover:text-orange-600 transition">關於專題</a>
+            <a href="#intro" class="hover:text-orange-600 transition">藝文現狀</a>
+            <a href="#download" class="hover:text-orange-600 transition">檔案下載</a>
+        </div>
+    </nav>
+
+    <!-- 主視覺區塊 -->
+    <header class="min-h-screen flex flex-col items-center justify-center text-center px-4">
+        <span class="text-orange-600 font-bold tracking-[0.3em] mb-4 text-sm animate-pulse">113學年度 期末專案報告</span>
+        <h1 class="text-5xl md:text-7xl font-bold mb-6 hero-text leading-tight">
+            島嶼的脈動：<br>台灣藝文活動之美
+        </h1>
+        <p class="max-w-2xl text-slate-500 leading-relaxed text-lg mb-10">
+            透過數據與實地考察，探索在科技浪潮下，台灣如何守護並推廣在地的藝術與文化生命力。
+        </p>
+        <a href="#about" class="border-b-2 border-slate-800 pb-1 font-medium hover:text-orange-600 hover:border-orange-600 transition duration-300">
+            開始探索
+        </a>
+    </header>
+
+    <!-- 專題介紹區塊 -->
+    <section id="about" class="py-20 px-6">
+        <div class="max-w-4xl mx-auto">
+            <div class="glass-card p-8 md:p-16 rounded-3xl">
+                <h2 class="text-3xl font-bold mb-8 serif border-l-4 border-orange-500 pl-4">專題研究動機</h2>
+                <div class="space-y-6 text-slate-600 leading-relaxed">
+                    <p>
+                        在現代快速節奏的生活中，文化活動不僅是心靈的慰藉，更是社會認同與創意產出的搖籃。本研究旨在探討台灣各地藝文活動（如：藝術節、文創市集、展演空間）的分佈規律與對青少年參與度的影響。
+                    </p>
+                    <p>
+                        我們希望透過網頁呈現台灣豐富的展演樣貌，並整合公部門數據，提供一個直觀且優美的導覽介面，讓更多同學能認識台灣這片土地上的藝術量能。
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 主題內容區塊 -->
+    <section id="intro" class="py-20 bg-white/30">
+        <div class="max-w-6xl mx-auto px-6">
+            <h2 class="text-3xl font-bold mb-12 text-center serif">台灣藝文三大核心</h2>
+            <div class="grid md:grid-cols-3 gap-8">
+                <!-- 卡片 1 -->
+                <div class="glass-card p-8 rounded-2xl transition hover:bg-white/90 group">
+                    <div class="w-12 h-12 bg-orange-100 rounded-full flex items-center justify-center mb-6 text-orange-600 text-2xl group-hover:bg-orange-600 group-hover:text-white transition">
+                        🏛️
+                    </div>
+                    <h3 class="text-xl font-bold mb-4 serif">城市美術館群</h3>
+                    <p class="text-slate-500 text-sm leading-relaxed">從北部的北美館、台中的國美館到南部的南美館，形成了台灣完整的當代藝術軸線。</p>
+                </div>
+                <!-- 卡片 2 -->
+                <div class="glass-card p-8 rounded-2xl transition hover:bg-white/90 group">
+                    <div class="w-12 h-12 bg-blue-100 rounded-full flex items-center justify-center mb-6 text-blue-600 text-2xl group-hover:bg-blue-600 group-hover:text-white transition">
+                        🎨
+                    </div>
+                    <h3 class="text-xl font-bold mb-4 serif">文創基地活化</h3>
+                    <p class="text-slate-500 text-sm leading-relaxed">華山1914、駁二藝術特區等老舊空間重生，成為當代文藝青年最重要的聚集地。</p>
+                </div>
+                <!-- 卡片 3 -->
+                <div class="glass-card p-8 rounded-2xl transition hover:bg-white/90 group">
+                    <div class="w-12 h-12 bg-green-100 rounded-full flex items-center justify-center mb-6 text-green-600 text-2xl group-hover:bg-green-600 group-hover:text-white transition">
+                        🎭
+                    </div>
+                    <h3 class="text-xl font-bold mb-4 serif">地方民俗慶典</h3>
+                    <p class="text-slate-500 text-sm leading-relaxed">結合現代劇場元素的民俗活動，將傳統信仰轉化為精采的藝術展演。 </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 執行檔下載區塊 -->
+    <section id="download" class="py-20 px-6">
+        <div class="max-w-2xl mx-auto text-center">
+            <div class="bg-slate-900 text-white p-12 rounded-[2rem] shadow-2xl relative overflow-hidden">
+                <!-- 裝飾背景 -->
+                <div class="absolute top-0 right-0 w-32 h-32 bg-orange-500/20 rounded-full blur-3xl -mr-10 -mt-10"></div>
+                
+                <h2 class="text-3xl font-bold mb-4 serif">專案成果下載</h2>
+                <p class="text-slate-400 mb-10 text-sm tracking-wide">包含完整書面報告、數據模型與研究原始碼</p>
+                
+                <button onclick="handleDownload()" class="btn-download bg-orange-500 text-white px-10 py-4 rounded-full font-bold flex items-center justify-center mx-auto space-x-3">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" viewBox="0 0 16 16">
+                        <path d="M8 5a.5.5 0 0 1 .5.5v3.793l1.146-1.147a.5.5 0 0 1 .708.708l-2 2a.5.5 0 0 1-.708 0l-2-2a.5.5 0 1 1 .708-.708L7.5 9.293V5.5A.5.5 0 0 1 8 5z"/>
+                        <path d="M3 0h10a2 2 0 0 1 2 2v12a2 2 0 0 1-2 2H3a2 2 0 0 1-2-2V2a2 2 0 0 1 2-2zm0 1a1 1 0 0 0-1 1v12a1 1 0 0 0 1 1h10a1 1 0 0 0 1-1V2a1 1 0 0 0-1-1H3z"/>
+                    </style>
+                    <span>下載專案執行檔 (.zip)</span>
+                </button>
+                <p class="mt-6 text-xs text-slate-500">版本：v1.0.4 | 檔案大小：45.2 MB</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- 頁尾 -->
+    <footer class="py-10 border-t border-slate-200 text-center text-slate-400 text-xs tracking-widest uppercase">
+        © 2024 高中藝文專題小組 · All Rights Reserved
+    </footer>
+
+    <!-- 通知訊息盒 -->
+    <div id="toast" class="fixed bottom-10 left-1/2 -translate-x-1/2 bg-slate-800 text-white px-6 py-3 rounded-xl opacity-0 transition-opacity pointer-events-none z-[100]">
+        下載已啟動...
+    </div>
+
+    <script>
+        // --- 動畫背景 Logic ---
+        const canvas = document.getElementById('bg-canvas');
+        const ctx = canvas.getContext('2d');
+        let particles = [];
+
+        function initCanvas() {
+            canvas.width = window.innerWidth;
+            canvas.height = window.innerHeight;
+            particles = [];
+            for (let i = 0; i < 40; i++) {
+                particles.push({
+                    x: Math.random() * canvas.width,
+                    y: Math.random() * canvas.height,
+                    radius: Math.random() * 80 + 20,
+                    color: i % 2 === 0 ? 'rgba(230, 126, 34, 0.05)' : 'rgba(44, 62, 80, 0.03)',
+                    vx: (Math.random() - 0.5) * 0.5,
+                    vy: (Math.random() - 0.5) * 0.5
+                });
+            }
+        }
+
+        function animate() {
+            ctx.clearRect(0, 0, canvas.width, canvas.height);
+            particles.forEach(p => {
+                p.x += p.vx;
+                p.y += p.vy;
+
+                if (p.x < -100) p.x = canvas.width + 100;
+                if (p.x > canvas.width + 100) p.x = -100;
+                if (p.y < -100) p.y = canvas.height + 100;
+                if (p.y > canvas.height + 100) p.y = -100;
+
+                ctx.beginPath();
+                ctx.arc(p.x, p.y, p.radius, 0, Math.PI * 2);
+                ctx.fillStyle = p.color;
+                ctx.fill();
+            });
+            requestAnimationFrame(animate);
+        }
+
+        // --- 視窗縮放處理 ---
+        window.addEventListener('resize', initCanvas);
+
+        // --- 導覽列滾動效果 ---
+        window.addEventListener('scroll', () => {
+            const nav = document.getElementById('navbar');
+            if (window.scrollY > 50) {
+                nav.classList.add('bg-white/80', 'shadow-sm', 'py-2');
+                nav.classList.remove('py-4');
+            } else {
+                nav.classList.remove('bg-white/80', 'shadow-sm', 'py-2');
+                nav.classList.add('py-4');
+            }
+        });
+
+        // --- 下載按鈕處理 ---
+        function handleDownload() {
+            const toast = document.getElementById('toast');
+            toast.style.opacity = '1';
+            
+            // 模擬下載延遲
+            setTimeout(() => {
+                toast.style.opacity = '0';
+                // 這裡在實際環境中可以替換成 window.location.href = 'your_file.zip';
+                console.log('專案檔案下載中...');
+            }, 3000);
+        }
+
+        // 初始化
+        window.onload = () => {
+            initCanvas();
+            animate();
+        };
+    </script>
+</body>
+</html>
